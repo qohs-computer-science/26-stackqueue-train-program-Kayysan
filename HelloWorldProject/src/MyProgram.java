@@ -46,18 +46,27 @@ public class MyProgram {
 
 
 		String t=x.nextLine();
+		//Scanner x =  Scanner(System.in);
 
 
 		while(!t.equals("END")){
 			if (t.substring(0,2).equals("CAR")){
-				cars.add(new Train(t, x.nextLine(),x.nextLine(),x.nextLine(),x.nextInt(),x.nextInt()));
+				String na= x.nextLine();
+				String pr= x.nextLine();
+				//String or= x.nextLine();
+				String de= x.nextLine();
+				int we= x.nextInt();
+				int mi= x.nextInt();
+				x.nextLine();
+				cars.add(new Train(t, na, pr, de,we,mi));
 				t=x.nextLine();
-				t=x.nextLine();
+				
 			}
 			else{
 				cars.add(new Train(t,x.nextLine()));
-				t=x.nextLine();
+				//t=x.nextLine();
 			}
+			t=x.nextLine();
 		}// end while
 
 		while(cars.size()>0){
