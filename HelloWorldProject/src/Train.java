@@ -7,18 +7,18 @@ public class Train {
     public Train ( String n, String p, String o, String d, int w, int m){
 
    
-        n=name;
-        p=product;
-        o=origin;
-        d=destination;
-        w=weight;
-        m=miles;
+        name=n;
+        product=p;
+        origin=o;
+        destination=d;
+        weight=w;
+        miles=m;
 
     }
 
     public Train ( String n, String d){
-        n=name;
-        d=destination;
+        name=n;
+        destination=d;
     }
 
     public String getName(){

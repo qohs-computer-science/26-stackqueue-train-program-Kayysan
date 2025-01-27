@@ -29,14 +29,12 @@ public class MyProgram {
 		int dWeight = 0;
 
 		Queue <Train> cars = new LinkedList<Train>();
- 
+		String t ="";
 	
 		Scanner x = new Scanner(System.in);
 		try{
 			File f = new File("HelloWorldProject/src/data.txt");
 			x = new Scanner (f);
-			String name = x.nextLine();
-			System.out.println(name);
 		}
 		catch(Exception e)
 		{
@@ -45,21 +43,22 @@ public class MyProgram {
 
 
 
-		String t=x.nextLine();
+		t=x.nextLine();
 		//Scanner x =  Scanner(System.in);
 
-
 		while(!t.equals("END")){
-			if (t.substring(0,2).equals("CAR")){
-				String na= x.nextLine();
+			System.out.println(t);
+
+			if (t.substring(0,3).equals("CAR")){
+				//String na= x.nextLine();
 				String pr= x.nextLine();
-				//String or= x.nextLine();
+				String or= x.nextLine();
 				String de= x.nextLine();
 				int we= x.nextInt();
 				int mi= x.nextInt();
 				x.nextLine();
-				cars.add(new Train(t, na, pr, de,we,mi));
-				t=x.nextLine();
+				cars.add(new Train(t, pr, or, de,we,mi));
+				//t=x.nextLine();
 				
 			}
 			else{
@@ -69,8 +68,9 @@ public class MyProgram {
 			t=x.nextLine();
 		}// end while
 
-		while(cars.size()>0){
+		while(!cars.isEmpty()){
 			Train temp=cars.remove();
+			System.out.println(temp);
 			if(temp.getMiles()<=700){
 				if ((temp.getDestination().equals("Baltimore"))){
 					cWeight+=temp.getWeight();
@@ -149,7 +149,7 @@ public class MyProgram {
 			while(trackA.size()>0){
 				trackA.pop();
 				Train temp=trackA.pop();
-				System.out.println(temp.getName()+ "containing "+ temp.getProduct());
+				System.out.println(temp.getName()+ " containing "+ temp.getProduct());
 			}//end while
 			aWeight=0;
 			System.out.println("The Trenton line is empty...");
@@ -165,14 +165,14 @@ public class MyProgram {
 			while(trackB.size()>0){
 				trackA.pop();
 				Train temp=trackB.pop();
-				System.out.println(temp.getName()+ "containing "+ temp.getProduct());
+				System.out.println(temp.getName()+ " containing "+ temp.getProduct());
 			}//end while
 			bWeight=0;
 			System.out.println("The Charlotte line is empty...");
 		
 		}
 		else
-			System.out.println("The CHarlotte line is empty...");
+			System.out.println("The Charlotte line is empty...");
 		//end trackA
 
 		if(!trackC.isEmpty()){
@@ -181,7 +181,7 @@ public class MyProgram {
 			while(trackC.size()>0){
 				trackC.pop();
 				Train temp=trackC.pop();
-				System.out.println(temp.getName()+ "containing "+ temp.getProduct());
+				System.out.println(temp.getName()+ " containing "+ temp.getProduct());
 			}//end while
 			cWeight=0;
 			System.out.println("The Baltimore line is empty...");
