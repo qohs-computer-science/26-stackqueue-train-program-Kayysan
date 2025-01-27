@@ -15,11 +15,11 @@ public class MyProgram {
 	public static void main(String[] args) {
 
 		int limitTrackA = 100000, limitTrackB = 100000, limitTrackC = 100000;
-		Stack <Train> all = new LinkedList <Train> (); 
-		Stack <Train> trackA = new LinkedList <Train> ();
-		Stack <Train> trackB = new LinkedList <Train> ();
-		Stack <Train> trackC = new LinkedList <Train> ();
-		Stack <Train> trackD = new LinkedList <Train> ();
+		Stack <Train> all = new Stack<>() ;
+		Stack <Train> trackA = new Stack<>() ;
+		Stack <Train> trackB = new Stack<>() ;
+		Stack <Train> trackC = new Stack<>() ;
+		Stack <Train> trackD = new Stack<>() ;
 
 		int engLim= 10000;
 		
@@ -49,8 +49,8 @@ public class MyProgram {
 
 
 		while(!t.equals("END")){
-			if (name.substring(0,3).equals("CAR")){
-				cars.add(new Train(t, x.nextLine(),x.nextLine(),x.nextLine(),x.nextLine(),x.nextLine()));
+			if (t.substring(0,2).equals("CAR")){
+				cars.add(new Train(t, x.nextLine(),x.nextLine(),x.nextLine(),x.nextInt(),x.nextInt()));
 				t=x.nextLine();
 				t=x.nextLine();
 			}
@@ -61,7 +61,7 @@ public class MyProgram {
 		}// end while
 
 		while(cars.size()>0){
-			Train temp=carlist.remove();
+			Train temp=cars.remove();
 			if(temp.getMiles()<=700){
 				if ((temp.getDestination().equals("Baltimore"))){
 					cWeight+=temp.getWeight();
@@ -74,7 +74,7 @@ public class MyProgram {
 
 						System.out.println(trackC.toString());
 						
-						while (trackC.size>0){
+						while (trackC.size()>0){
 							Train tempCar=trackC.pop();
 							System.out.println(tempCar.getName()+" contains the product: "+ tempCar.getProduct());
 						}
@@ -93,7 +93,7 @@ public class MyProgram {
 
 						System.out.println(trackB.toString());
 						
-						while (trackB.size>0){
+						while (trackB.size()>0){
 							Train tempCar=trackB.pop();
 							System.out.println(tempCar.getName()+" contains the product: "+ tempCar.getProduct());
 						}
@@ -112,7 +112,7 @@ public class MyProgram {
 
 						System.out.println(trackA.toString());
 						
-						while (trackA.size>0){
+						while (trackA.size()>0){
 							Train tempCar=trackA.pop();
 							System.out.println(tempCar.getName()+" contains the product: "+ tempCar.getProduct());
 						}
@@ -120,44 +120,76 @@ public class MyProgram {
 					}
 
 				}//end Tren
+				else{
+					while(trackD.size()>0){
+						Train tempCar =trackD.pop();
+						System.out.println(tempCar.getName()+" contains the product: "+ tempCar.getProduct());
+					}
+				}
+
 
 
 			}//ed big if
 
 		}//end big while
+		System.out.println("Departing all tracks");
 
-
+		if(!trackA.isEmpty()){
+			trackA.push(new Train ("ENG00000", "Trenton"));
+			System.out.println(trackA.peek().getName()+" leaving for "+trackA.peek().getDestination()+" with the following cars: ");
+			while(trackA.size()>0){
+				trackA.pop();
+				Train temp=trackA.pop();
+				System.out.println(temp.getName()+ "containing "+ temp.getProduct());
+			}//end while
+			aWeight=0;
+			System.out.println("The Trenton line is empty...");
 		
+		}
+		else
+			System.out.println("The Trenton line is empty...");
+		//end trackA
 
+		if(!trackB.isEmpty()){
+			trackB.push(new Train ("ENG00000", "Charlotte"));
+			System.out.println(trackB.peek().getName()+" leaving for "+trackB.peek().getDestination()+" with the following cars: ");
+			while(trackB.size()>0){
+				trackA.pop();
+				Train temp=trackB.pop();
+				System.out.println(temp.getName()+ "containing "+ temp.getProduct());
+			}//end while
+			bWeight=0;
+			System.out.println("The Charlotte line is empty...");
+		
+		}
+		else
+			System.out.println("The CHarlotte line is empty...");
+		//end trackA
 
+		if(!trackC.isEmpty()){
+			trackC.push(new Train ("ENG00000", "Baltimore"));
+			System.out.println(trackC.peek().getName()+" leaving for "+trackC.peek().getDestination()+" with the following cars: ");
+			while(trackC.size()>0){
+				trackC.pop();
+				Train temp=trackC.pop();
+				System.out.println(temp.getName()+ "containing "+ temp.getProduct());
+			}//end while
+			cWeight=0;
+			System.out.println("The Baltimore line is empty...");
+		
+		}
+		else
+			System.out.println("The Baltimore line is empty...");
+		//end trackA
 
-
-
-		if(getName().equals("Baltinore")){
-			train();
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+		while(trackD.size()>0)
+		{
+			Train temp= trackD.pop();
+			System.out.println(temp.getName()+ " containing "+ temp.getProduct());
 		}
 
-
-
-
-	}
-}
+	}//end main
+}//end class
 
 	
 

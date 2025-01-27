@@ -41,7 +41,7 @@ public class Train {
     }
 
 
-    public toString(){
+    public String toString(){
         return(name+" leaving for "+ destination+ " with the following cars: ");
     }
 
